@@ -8,7 +8,7 @@ from pages.login_page import LoginPage
 from utils.settings import DRIVER_PATH, IMPLICITLY_WAIT
 
 
-class Test(unittest.TestCase):
+class TestAddPlayer(unittest.TestCase):
     driver = None
 
     @classmethod

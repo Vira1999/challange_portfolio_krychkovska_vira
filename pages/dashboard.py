@@ -1,4 +1,7 @@
 import time
+from lib2to3.pgen2 import driver
+
+from selenium.webdriver.support.wait import WebDriverWait
 
 from pages.base_page import BasePage
 
@@ -25,8 +28,9 @@ class Dashboard(BasePage):
     last_updated_report_hyperlink_xpath = "//div[1]/main/div[3]/div[3]/div/div//child::a[5]"
     add_player_url = "https://scouts-test.futbolkolektyw.pl/en/players/add/"
     expected_add_player_title_of_page = "Add player"
+    wait = WebDriverWait(driver, 10)
     def title_of_page(self):
-        time.sleep(4)
+        self.wait_for_element_to_be_clickable(self.players_button_xpath)
         assert self.get_page_title(self.dashboard_url) == self.expected_title
 
     def click_on_the_add_player_button(self):
@@ -38,6 +42,19 @@ class Dashboard(BasePage):
 
     def type_in_password(self, password):
         self.field_send_keys(self.password_field_xpath, password)
+
+    def click_the_sign_out_button(self):
+        self.click_on_the_element(self.sign_out_button_xpath)
+
+    def click_changing_language_button(self):
+        self.click_on_the_element(self.language_button_xpath)
+
+    def click_on_the_add_player_button(self):
+        self.click_on_the_element(self.add_player_hyperlink_xpath)
+
+    def click_the_players_button(self):
+        self.wait_for_element_to_be_clickable(self.players_button_xpath)
+        self.click_on_the_element(self.players_button_xpath)
 
     pass
 

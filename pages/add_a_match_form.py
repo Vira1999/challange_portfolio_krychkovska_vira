@@ -1,7 +1,7 @@
 from pages.base_page import BasePage
 
 
-class add_a_match_form(BasePage):
+class AddAMatchForm(BasePage):
     header_section_xpath = "//div[1]/header"
     menu_padding_xpath = "//div[1]/div/div/div/ul[1]"
     main_page_button_xpath = "//*[@class='MuiListItemIcon-root']/parent::div"
